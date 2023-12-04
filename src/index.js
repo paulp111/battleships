@@ -1,9 +1,10 @@
+// index.js
 import './styles.css';
+import './selectionScreen.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const gameboardPlayer = document.getElementById('gameboard-player');
     const gameboardComputer = document.getElementById('gameboard-computer');
-    const startPlayButton = document.getElementById('start-play-button');
     let gameStarted = false;
     let playerShipsPlaced = 0;
     const maxPlayerShips = 5;
@@ -11,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     createGameboard(gameboardPlayer, handlePlayerBoardClick);
     createGameboard(gameboardComputer, handleComputerBoardClick);
 
-    startPlayButton.addEventListener('click', () => {
+    document.addEventListener('gameStart', () => {
         gameStarted = true;
-        startPlayButton.disabled = true;
+        // Logik
     });
 
     function createGameboard(gameboard, clickHandler) {
