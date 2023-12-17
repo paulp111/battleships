@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     createSelectionScreen();
 
-    document.getElementById('captain-selection').addEventListener('change', handleSelectionChange);
-    document.getElementById('ship-selection').addEventListener('change', handleSelectionChange);
+    document.getElementById('captain-selection').addEventListener('change', selectionChange);
+    document.getElementById('ship-selection').addEventListener('change', selectionChange);
 
     document.getElementById('start-selection-button').addEventListener('click', startGame);
 
@@ -28,24 +28,26 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.prepend(selectionContainer);
     }
 
-    function handleSelectionChange() {
+    function selectionChange() {
         const captainSelected = document.getElementById('captain-selection').value;
         const shipSelected = document.getElementById('ship-selection').value;
-        document.getElementById('start-selection-button').disabled = !(captainSelected && shipSelected);
+        const startButton = document.getElementById('start-selection-button');
+        startButton.disabled = !(captainSelected && shipSelected);
+        if (!startButton.disabled) {
+            sessionStorage.setItem('selectedShipForm', shipSelected);
+        }
     }
 
     function startGame() {
         document.getElementById('selection-container').style.display = 'none';
-    
         document.getElementById('gameboard-container').style.display = 'flex';
-    
-
         const event = new CustomEvent('gameStart', { 
             detail: { 
                 captain: document.getElementById('captain-selection').value, 
-                shipForm: document.getElementById('ship-selection').value 
-            }
+                shipForm: sessionStorage.getItem('selectedShipForm') 
+            } 
         });
         document.dispatchEvent(event);
     }
 });
+
