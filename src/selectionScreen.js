@@ -1,3 +1,5 @@
+//selectionscreen
+
 document.addEventListener('DOMContentLoaded', () => {
     createSelectionScreen();
 

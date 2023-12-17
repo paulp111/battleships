@@ -250,7 +250,7 @@ class Player {
 //-------------------CLASS COMPUTER------------------
 class ComputerPlayer extends Player {
     constructor(gameboard) {
-        super(gameboard); //?????? chat
+        super(gameboard); 
     }
 //random Placement
     placeShipsRnd(shipForms) {
@@ -286,3 +286,4 @@ class ComputerPlayer extends Player {
         }
     }
 }
+

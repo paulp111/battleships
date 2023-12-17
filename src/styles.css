@@ -40,8 +40,8 @@ body::before {
 .square {
     width: 30px;
     height: 30px;
-    background-color: #fff;
-    border: 1px solid #000;
+    background-color: #ffff;
+    border: 1px solid #0000;
     cursor: pointer;
 }
 
